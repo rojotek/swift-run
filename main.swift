@@ -20,12 +20,12 @@ func lookupCommand() -> Command {
     return command!
 }
 
-func exec(cmd: String, args: [String]) {
+func exec(cmd: Command) {
     // Array of UnsafeMutablePointer<Int8>
-    let cargs = args.map { strdup($0) } + [nil]
-    execvp(cmd, cargs)
+    let cargs = cmd.args.map { strdup($0) } + [nil]
+    execvp(cmd.cmd, cargs)
 }
 
 let command = lookupCommand()
-exec(cmd: command.cmd, args: command.args)
+exec(cmd: command)
 print("failed to exec command")
