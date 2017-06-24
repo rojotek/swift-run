@@ -7,7 +7,7 @@ struct Command {
 }
 
 let commands = [
-    Command(file: "Procfile.rob", cmd: "foreman", args:["foreman", "start", "-f", "Procfile.rob"]),
+    Command(file: "Procfile.rob", cmd: "foreman", args:["foreman", "start", "-f", "Procfile.\(NSUserName())"]),
     Command(file: "Procfile", cmd: "foreman", args:["foreman", "start"]),
     Command(file: "bin/rails", cmd: "bin/rails", args:["rails", "s"]),
     Command(file: "ember", cmd: "ember", args:["ember", "serve"]),
