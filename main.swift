@@ -10,7 +10,7 @@ let commands = [
     Command(file: "Procfile.rob", cmd: "foreman", args:["foreman", "start", "-f", "Procfile.\(NSUserName())"]),
     Command(file: "Procfile", cmd: "foreman", args:["foreman", "start"]),
     Command(file: "bin/rails", cmd: "bin/rails", args:["rails", "s"]),
-    Command(file: "ember", cmd: "ember", args:["ember", "serve"]),
+    Command(file: "ember-cli-build.js", cmd: "ember", args:["ember", "serve"]),
     Command(file: ".", cmd: "/bin/ls", args: ["ls", "-l"]) // . will always exist in a files system so this gives a safe terminator.
 ]
 
@@ -21,6 +21,7 @@ func lookupCommand() -> Command {
 }
 
 func exec(cmd: Command) {
+    print("Running: \(cmd.args.joined(separator: " ")) ")
     // Array of UnsafeMutablePointer<Int8>
     let cargs = cmd.args.map { strdup($0) } + [nil]
     execvp(cmd.cmd, cargs)
