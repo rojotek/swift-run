@@ -2,3 +2,5 @@
 Swift program that runs the appropriate server executable in the current directory!
 
 Compile it with: swiftc main.swift -o r
+
+Critical testing provided by Adrian.
